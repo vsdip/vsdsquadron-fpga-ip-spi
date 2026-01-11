@@ -35,7 +35,7 @@ It enables communication with external SPI-compatible devices using SPI Mode-0 t
 - Single SPI slave
 - No interrupts
 - No FIFO support
----
+
 ---
 
 ## Block Diagram
