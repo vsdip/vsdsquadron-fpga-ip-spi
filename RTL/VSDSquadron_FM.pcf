@@ -1,0 +1,22 @@
+# ---------- Clock ----------
+set_io CLK 28
+
+# ---------- Reset ----------
+set_io RESET 10
+
+# ---------- UART ----------
+set_io TXD 4
+set_io RXD 3
+
+# ---------- GPIO LEDs ----------
+set_io LEDS[0] 38
+set_io LEDS[1] 43
+set_io LEDS[2] 45
+set_io LEDS[3] 47
+set_io LEDS[4] 6
+
+# ---------- SPI (FIXED pins) ----------
+set_io sclk 34
+set_io mosi 35
+set_io miso 36
+set_io cs_n 37
