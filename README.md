@@ -75,5 +75,32 @@ The following block diagram shows the logical structure of the SPI Master IP and
 
 ---
 
+## How to Use IP
+1. Create a C program with [address mapping](Firmware/io.h) file included Or use a Pre made C Program [SPI_MASTER](Firmware/SPI_MASTER.c). 
+2. Convert it to .hex file using command
+   ```bash
+   cd Firmware/
+   make SPI_MASTER.bram.hex
+   ```
+
+   The make file copies your Hex file to `firmware.h` in your RTL folder.
+3. Generating Bitstream.
+   ```bash
+   cd ..
+   cd RTL/
+   make build
+   ```
+4. Flash to your FPGA
+   ```bash
+   make flash
+   ```
+5. To check UART output
+   ```bash
+   make terminal
+   ```
+
+---
+## PIN CONNECTIONS
+
 
 
