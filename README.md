@@ -41,6 +41,7 @@ It enables communication with external SPI-compatible devices using SPI Mode-0 t
 ## Block Diagram
 
 The following block diagram shows the logical structure of the SPI Master IP and its interaction with the RISC-V CPU and external SPI device.
+
 <img width="251" height="661" alt="Untitled Diagram drawio (5)" src="https://github.com/user-attachments/assets/f8d3d64e-ef6d-43e8-b7c5-0e0e28ef033e" />
 
 
