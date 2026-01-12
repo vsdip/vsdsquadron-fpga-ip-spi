@@ -532,7 +532,7 @@ module SPI(
 localparam CNTRL=2'b00;
 localparam TXDATA=2'b01;
 localparam RXDATA=2'b10;
-localparam STATUS=2'b00;
+localparam STATUS=2'b11;
 
 //control register fields
 reg en;
@@ -563,18 +563,35 @@ always @(posedge clk) begin
         tx     <= 0;
         done   <= 0;
     end
-    else if(sel && w_en) begin
+else begin
+    // Default: START is a one-cycle pulse (auto-clears every cycle)
+    start <= 1'b0;
+
+    if(sel && w_en) begin
         case(offset)
             CNTRL: begin
                 en     <= wdata[0];
                 clkdiv <= wdata[15:8];
-                if(!busy)
-                    start <= wdata[1];
+
+                // Generate a one-cycle START pulse only when not busy
+                if(!busy && wdata[1])
+                    start <= 1'b1;
             end
-            TXDATA: tx <= wdata[7:0];
-            STATUS: if(wdata[1]) done <= 0;
+
+            TXDATA: begin
+                tx <= wdata[7:0];
+            end
+
+            STATUS: begin
+                // Clear DONE (write-1-to-clear on bit1)
+                if(wdata[1]) done <= 1'b0;
+            end
+
+            default: begin end
         endcase
     end
+end
+
 end
 
   
